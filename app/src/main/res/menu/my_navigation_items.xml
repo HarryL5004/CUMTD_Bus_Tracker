@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_busRoutes"
+        android:icon="@drawable/ic_outline_departure_board_24px"
+        android:title="Routes" />
+
+    <item
+        android:id="@+id/navigation_favorites"
+        android:icon="@drawable/ic_outline_announcement_24px"
+        android:title="News" />
+
+</menu>
