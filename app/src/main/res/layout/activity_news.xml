@@ -30,7 +30,7 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
-        android:layout_height="44dp"
+        android:layout_height="53dp"
         android:background="@color/colorPrimary"
         app:itemIconTint="#dbdbdb"
         app:itemTextColor="#FFFFFF"
@@ -38,19 +38,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/my_navigation_items"/>
+        app:menu="@menu/my_navigation_items" />
 
-    <ImageButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/orange"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_outline_refresh_24px" />
+        app:srcCompat="@drawable/ic_outline_refresh_24px"  />
 
     <TextView
         android:id="@+id/textView3"

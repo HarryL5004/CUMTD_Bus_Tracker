@@ -17,9 +17,8 @@
         android:elevation="4dp"
         android:layout_weight="1"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:logo="@drawable/ic_round_directions_bus_24px"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Bus Tracker"
+        app:title="Departures"
         app:titleTextColor="#FFFFFF" />
 
     <LinearLayout
@@ -47,6 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="46dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/orange"
             android:text="Search" />
     </LinearLayout>
 

@@ -19,13 +19,14 @@
         android:layout_weight="1"
         android:weightSum="4"
         >
+
         <EditText
             android:id="@+id/searchBox"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="3"
             android:ems="10"
-            android:hint="Green and Wright"
+            android:hint="Illinois Terminal"
             android:inputType="text" />
 
         <Button
@@ -34,6 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="46dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/orange"
             android:text="Search" />
     </LinearLayout>
 

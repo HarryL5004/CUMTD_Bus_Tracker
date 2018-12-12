@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -42,7 +43,7 @@ public class News extends AppCompatActivity {
         textView.setMovementMethod(new ScrollingMovementMethod());
         errorMsg = (TextView) findViewById(R.id.textView3);
         apiCall();
-        final ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton);
+        final FloatingActionButton imageButton = (FloatingActionButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
