@@ -53,7 +53,6 @@ public class Bus_Routes extends AppCompatActivity {
                 editText.clearFocus();
                 String input = editText.getText().toString();
                 getStopId(input);
-                //getRoutes(input);
             }
         });
 
@@ -113,10 +112,10 @@ public class Bus_Routes extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_LONG).show();
                 }
             });
-            jsonObjectR.setRetryPolicy(new DefaultRetryPolicy(
+            /*jsonObjectR.setRetryPolicy(new DefaultRetryPolicy(
                     30000,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));*/
             requestQueue.add(jsonObjectR);
         }
         catch(Exception E) {
@@ -157,10 +156,10 @@ public class Bus_Routes extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_LONG).show();
                 }
             });
-            jsonObjectR.setRetryPolicy(new DefaultRetryPolicy(
+            /*jsonObjectR.setRetryPolicy(new DefaultRetryPolicy(
                     30000,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));*/
             requestQueue.add(jsonObjectR);
         }
         catch(Exception E) {
@@ -170,14 +169,14 @@ public class Bus_Routes extends AppCompatActivity {
     void callDone(JSONObject response) throws Exception{
         JSONArray stopsArray = response.getJSONArray("routes");
         JSONObject routeObject;
-        String[][] myDataset = new String[stopsArray.length()][3];
+        String[][] myData = new String[stopsArray.length()][3];
         for (int i = 0; i < stopsArray.length(); i++) {
             routeObject = stopsArray.getJSONObject(i);
-            myDataset[i][0] = "   " + routeObject.getString("route_short_name") + "  " + routeObject.getString("route_long_name");
-            myDataset[i][1] = "#" + routeObject.getString("route_color");
-            myDataset[i][2] = "#" + routeObject.getString("route_text_color");
+            myData[i][0] = "   " + routeObject.getString("route_short_name") + "  " + routeObject.getString("route_long_name");
+            myData[i][1] = "#" + routeObject.getString("route_color");
+            myData[i][2] = "#" + routeObject.getString("route_text_color");
         }
-        mAdapter = new MyAdapter(myDataset);
+        mAdapter = new MyAdapter(myData);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

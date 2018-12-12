@@ -11,7 +11,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,8 +26,7 @@ import org.json.JSONObject;
 
 public class News extends AppCompatActivity {
     private static RequestQueue requestQueue;
-    private JsonParser parser = new JsonParser();
-    private JsonObject result;
+
     private String toDisplay = "";
     private TextView textView;
     private TextView errorMsg;
