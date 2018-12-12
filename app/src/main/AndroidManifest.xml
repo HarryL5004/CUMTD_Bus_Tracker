@@ -15,6 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:label="Bus Tracker"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,8 @@
         </activity>
         <activity
             android:name=".Bus_Routes"
-            android:label="Bus Routes" />
+            android:label="Bus Routes"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".News"
             android:label="News" />
