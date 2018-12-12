@@ -43,6 +43,7 @@ public class News extends AppCompatActivity {
         textView.setMovementMethod(new ScrollingMovementMethod());
         errorMsg = (TextView) findViewById(R.id.textView3);
         apiCall();
+
         final FloatingActionButton imageButton = (FloatingActionButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +111,7 @@ public class News extends AppCompatActivity {
         JSONArray newsArray = response.getJSONArray("news");
         for (int i = 0; i < 10; i++) {
             JSONObject newsObject = newsArray.getJSONObject(i);
-            toDisplay += "<h3>" + newsObject.getString("title") + "</h3>" +
+            toDisplay += "<h1>" + newsObject.getString("title") + "</h1>" +
                     "<b>" + newsObject.getString("author") + "</b> " +
                     newsObject.getString("postetd_date") + "<p>" + "    " + newsObject.getString("body") + "</p>";
         }

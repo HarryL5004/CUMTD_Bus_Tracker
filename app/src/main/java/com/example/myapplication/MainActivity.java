@@ -36,20 +36,17 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private static RequestQueue requestQueue;
     private EditText editText;
-    private String toDisplay = "";
     private String stop_id = "";
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         requestQueue = Volley.newRequestQueue(this);
-
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
 
         editText = (EditText) findViewById(R.id.searchBox);
         editText.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);
@@ -60,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 editText.clearFocus();
                 String input = editText.getText().toString();
                 getStopId(input);
-                //getDepartureTime(input);
             }
         });
 
@@ -69,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
-        mRecyclerView.addItemDecoration(itemDecoration);
+        /*DividerItemDecoration itemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
+        mRecyclerView.addItemDecoration(itemDecoration);*/
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -132,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
     void idCallDone(JSONObject response) throws Exception {
         JSONArray stopsArray = response.getJSONArray("stops");
         JSONObject stopsObject = stopsArray.getJSONObject(0);
-        //textView.setText(stopsObject.getString("stop_name") + stopsObject.getString("stop_id"));
         stop_id = stopsObject.getString("stop_id");
         getDepartureTime(stop_id);
     }
@@ -163,10 +158,10 @@ public class MainActivity extends AppCompatActivity {
                     //toast.show();
                 }
             });
-            jsonObjectR.setRetryPolicy(new DefaultRetryPolicy(
+            /*jsonObjectR.setRetryPolicy(new DefaultRetryPolicy(
                     30000,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));*/
             requestQueue.add(jsonObjectR);
         }
         catch(Exception E) {
@@ -178,18 +173,17 @@ public class MainActivity extends AppCompatActivity {
         JSONObject stopsObject;
         JSONObject routeObject;
         JSONObject tripObject;
-        String[][] myDataset = new String[stopsArray.length()][3];
+        String[][] myData = new String[stopsArray.length()][3];
         for (int i = 0; i < stopsArray.length(); i++) {
             stopsObject = stopsArray.getJSONObject(i);
             routeObject = stopsObject.getJSONObject("route");
             tripObject = stopsObject.getJSONObject("trip");
-            myDataset[i][0] = "   " + stopsObject.getString("headsign") + " " + tripObject.getString("trip_headsign")
+            myData[i][0] = "   " + stopsObject.getString("headsign") + " " + tripObject.getString("trip_headsign")
                     + "\n" + "       " + stopsObject.getString("expected_mins") + " mins";
-            myDataset[i][1] = "#" + routeObject.getString("route_color");
-            myDataset[i][2] = "#" + routeObject.getString("route_text_color");
+            myData[i][1] = "#" + routeObject.getString("route_color");
+            myData[i][2] = "#" + routeObject.getString("route_text_color");
         }
-        //textView.setText(toDisplay);
-        mAdapter = new MyAdapter(myDataset);
+        mAdapter = new MyAdapter(myData);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

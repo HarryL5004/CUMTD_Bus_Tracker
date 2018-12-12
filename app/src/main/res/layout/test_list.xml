@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_alignParentTop="true"
+    android:textAllCaps="false"
     android:textColor="#3b444b"
     android:textSize="16dp"
-    android:textStyle="normal" />
+    android:textStyle="normal"
+    app:fontFamily="@font/roboto_regular" />
