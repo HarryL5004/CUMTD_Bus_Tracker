@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -43,6 +46,17 @@ public class RoutesActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.searchBox);
         editText.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (v.getId() == R.id.searchBox && actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    v.clearFocus();
+                    getStopId(v.getText().toString());
+                    return true;
+                }
+                return false;
+            }
+        });
 
         Button button = findViewById(R.id.search);
         button.setOnClickListener(new View.OnClickListener() {
@@ -66,13 +80,13 @@ public class RoutesActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.navigation_home:
+                    case R.id.navigation_departures:
                         Intent intent = new Intent(RoutesActivity.this, DeparturesActivity.class);
                         startActivity(intent);
                         return true;
-                    case R.id.navigation_busRoutes:
+                    case R.id.navigation_routes:
                         return true;
-                    case R.id.navigation_favorites:
+                    case R.id.navigation_news:
                         intent = new Intent(RoutesActivity.this, NewsActivity.class);
                         startActivity(intent);
                         return true;
@@ -80,6 +94,7 @@ public class RoutesActivity extends AppCompatActivity {
                 return false;
             }
         });
+        navigation.setSelectedItemId(R.id.navigation_routes);
     }
 
     void getStopId(String stopName) {

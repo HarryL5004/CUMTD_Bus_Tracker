@@ -53,20 +53,21 @@ public class NewsActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.navigation_home:
+                    case R.id.navigation_departures:
                         Intent intent = new Intent(NewsActivity.this, DeparturesActivity.class);
                         startActivity(intent);
                         return true;
-                    case R.id.navigation_busRoutes:
+                    case R.id.navigation_routes:
                         intent = new Intent(NewsActivity.this, RoutesActivity.class);
                         startActivity(intent);
                         return true;
-                    case R.id.navigation_favorites:
+                    case R.id.navigation_news:
                         return true;
                 }
                 return false;
             }
         });
+        navigation.setSelectedItemId(R.id.navigation_news);
     }
 
     void apiCall() {

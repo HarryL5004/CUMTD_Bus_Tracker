@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.github.departures.DeparturesActivity"
+            android:name=".DeparturesActivity"
             android:label="Departures"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -23,13 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.github.departures.RoutesActivity"
+            android:name=".RoutesActivity"
             android:label="Routes"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.github.departures.NewsActivity"
+            android:name=".NewsActivity"
             android:label="News" />
-        <activity android:name="com.github.departures.Test" />
+        <activity android:name=".Test" />
     </application>
 
 </manifest>

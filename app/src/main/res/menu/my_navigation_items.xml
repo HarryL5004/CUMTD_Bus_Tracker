@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_departures"
         android:icon="@drawable/ic_outline_departure_board_24px"
-        android:title="Departures" />
+        android:title="@string/navigation_departures" />
 
     <item
-        android:id="@+id/navigation_busRoutes"
+        android:id="@+id/navigation_routes"
         android:icon="@drawable/ic_car_multiple"
-        android:title="Routes" />
+        android:title="@string/navigation_routes" />
 
     <item
-        android:id="@+id/navigation_favorites"
+        android:id="@+id/navigation_news"
         android:icon="@drawable/ic_outline_announcement_24px"
-        android:title="News" />
+        android:title="@string/navigation_news" />
 
 </menu>

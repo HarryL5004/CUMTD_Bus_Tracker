@@ -32,7 +32,8 @@
         android:layout_marginRight="8dp"
         android:layout_weight="3"
         android:ems="10"
-        android:hint="@string/hint_search_stop"
+        android:hint="@string/hint_search"
+        android:imeOptions="actionSearch"
         android:inputType="text"
         app:layout_constraintEnd_toStartOf="@+id/search"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +46,7 @@
         android:layout_marginTop="8dp"
         android:layout_weight="8"
         android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintTop_toBottomOf="@+id/searchBox" />
 
     <android.support.design.widget.BottomNavigationView

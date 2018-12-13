@@ -8,8 +8,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import com.android.volley.Request;
@@ -22,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DeparturesActivity extends AppCompatActivity {
@@ -41,6 +44,17 @@ public class DeparturesActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.searchBox);
         editText.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (v.getId() == R.id.searchBox && actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    v.clearFocus();
+                    getStopId(v.getText().toString());
+                    return true;
+                }
+                return false;
+            }
+        });
 
         Button button = findViewById(R.id.search);
         button.setOnClickListener(new View.OnClickListener() {
@@ -64,13 +78,13 @@ public class DeparturesActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.navigation_home:
+                    case R.id.navigation_departures:
                         return true;
-                    case R.id.navigation_busRoutes:
+                    case R.id.navigation_routes:
                         Intent intent = new Intent(DeparturesActivity.this, RoutesActivity.class);
                         startActivity(intent);
                         return true;
-                    case R.id.navigation_favorites:
+                    case R.id.navigation_news:
                         intent = new Intent(DeparturesActivity.this, NewsActivity.class);
                         startActivity(intent);
                         return true;
