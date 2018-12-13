@@ -184,8 +184,9 @@ public class DeparturesActivity extends AppCompatActivity {
             stopsObject = stopsArray.getJSONObject(i);
             routeObject = stopsObject.getJSONObject("route");
             tripObject = stopsObject.getJSONObject("trip");
-            myData[i][0] = "   " + stopsObject.getString("headsign") + " (" + tripObject.getString("trip_headsign") + ")"
-                    + "\n" + "       " + stopsObject.getString("expected_mins") + " mins";
+            myData[i][0] = stopsObject.getString("headsign") + " (" + tripObject.getString("trip_headsign") + ")"
+                    + "\n" + "    " + stopsObject.getString("expected_mins");
+            myData[i][0] += stopsObject.getInt("expected_mins") < 2 ? " min" : " mins";
             myData[i][1] = "#" + routeObject.getString("route_color");
             myData[i][2] = "#" + routeObject.getString("route_text_color");
         }

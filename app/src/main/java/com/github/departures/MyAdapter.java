@@ -29,6 +29,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         TextView v = (TextView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.test_list, parent, false);
+        v.setPadding(16, 8, 16, 8);
         return new MyViewHolder(v);
     }
 

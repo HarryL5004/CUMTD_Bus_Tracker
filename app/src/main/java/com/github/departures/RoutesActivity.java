@@ -186,7 +186,7 @@ public class RoutesActivity extends AppCompatActivity {
         String[][] myData = new String[stopsArray.length()][3];
         for (int i = 0; i < stopsArray.length(); i++) {
             routeObject = stopsArray.getJSONObject(i);
-            myData[i][0] = "   " + routeObject.getString("route_short_name") + "  " + routeObject.getString("route_long_name");
+            myData[i][0] = routeObject.getString("route_short_name") + "  " + routeObject.getString("route_long_name");
             myData[i][1] = "#" + routeObject.getString("route_color");
             myData[i][2] = "#" + routeObject.getString("route_text_color");
         }
