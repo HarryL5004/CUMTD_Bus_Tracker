@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_car_multiple" />
-                            <entry key="sourceFile" value="C:\Users\Harry\Downloads\car-multiple.svg" />
+                            <entry key="outputName" value="ic_launcher_foreground" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/ic_launcher_foreground_compact.svg" />
                           </map>
                         </option>
                       </PersistentState>

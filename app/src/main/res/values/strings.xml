@@ -5,4 +5,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="hint_search_stop">Enter stop name</string>
+    <string name="hint_search_route">Enter route number</string>
+
+    <string name="button_search">Search</string>
+
+    <string name="network_error">Network Error</string>
 </resources>

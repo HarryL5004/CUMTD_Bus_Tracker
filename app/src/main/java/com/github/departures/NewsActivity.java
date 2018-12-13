@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.github.departures;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -18,13 +18,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class News extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity {
     private static RequestQueue requestQueue;
 
     private String toDisplay = "";
@@ -37,12 +35,12 @@ public class News extends AppCompatActivity {
         setContentView(R.layout.activity_news);
 
         requestQueue = Volley.newRequestQueue(this);
-        textView = (TextView) findViewById(R.id.textView2);
+        textView = findViewById(R.id.textView2);
         textView.setMovementMethod(new ScrollingMovementMethod());
-        errorMsg = (TextView) findViewById(R.id.textView3);
+        errorMsg = findViewById(R.id.textView3);
         apiCall();
 
-        final FloatingActionButton imageButton = (FloatingActionButton) findViewById(R.id.imageButton);
+        final FloatingActionButton imageButton = findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,17 +48,17 @@ public class News extends AppCompatActivity {
             }
         });
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        BottomNavigationView navigation = findViewById(R.id.bottomNavigationView);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
-                        Intent intent = new Intent(News.this, MainActivity.class);
+                        Intent intent = new Intent(NewsActivity.this, DeparturesActivity.class);
                         startActivity(intent);
                         return true;
                     case R.id.navigation_busRoutes:
-                        intent = new Intent(News.this, Bus_Routes.class);
+                        intent = new Intent(NewsActivity.this, RoutesActivity.class);
                         startActivity(intent);
                         return true;
                     case R.id.navigation_favorites:
@@ -93,7 +91,7 @@ public class News extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             textView.setText("");
                             Log.e("Error Response", error.toString());
-                            errorMsg.setText("Network Error");
+                            errorMsg.setText(getResources().getText(R.string.network_error));
                         }
                     }
             );

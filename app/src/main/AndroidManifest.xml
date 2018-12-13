@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.github.departures">
     
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.github.departures.DeparturesActivity"
             android:label="Departures"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -23,13 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Bus_Routes"
+            android:name="com.github.departures.RoutesActivity"
             android:label="Routes"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".News"
+            android:name="com.github.departures.NewsActivity"
             android:label="News" />
-        <activity android:name=".Test"></activity>
+        <activity android:name="com.github.departures.Test" />
     </application>
 
 </manifest>

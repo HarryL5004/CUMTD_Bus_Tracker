@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.github.departures;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,10 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,7 +26,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Bus_Routes extends AppCompatActivity {
+public class RoutesActivity extends AppCompatActivity {
     private static RequestQueue requestQueue;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -41,13 +38,13 @@ public class Bus_Routes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bus_routes);
+        setContentView(R.layout.activity_routes);
         requestQueue = Volley.newRequestQueue(this);
 
-        editText = (EditText) findViewById(R.id.searchBox);
+        editText = findViewById(R.id.searchBox);
         editText.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
 
-        Button button = (Button) findViewById(R.id.search);
+        Button button = findViewById(R.id.search);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(final View v) {
                 editText.clearFocus();
@@ -56,7 +53,7 @@ public class Bus_Routes extends AppCompatActivity {
             }
         });
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView = findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -64,19 +61,19 @@ public class Bus_Routes extends AppCompatActivity {
         /*DividerItemDecoration itemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
         mRecyclerView.addItemDecoration(itemDecoration);*/
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        BottomNavigationView navigation = findViewById(R.id.bottomNavigationView);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
-                        Intent intent = new Intent(Bus_Routes.this, MainActivity.class);
+                        Intent intent = new Intent(RoutesActivity.this, DeparturesActivity.class);
                         startActivity(intent);
                         return true;
                     case R.id.navigation_busRoutes:
                         return true;
                     case R.id.navigation_favorites:
-                        intent = new Intent(Bus_Routes.this, News.class);
+                        intent = new Intent(RoutesActivity.this, NewsActivity.class);
                         startActivity(intent);
                         return true;
                 }
@@ -109,7 +106,9 @@ public class Bus_Routes extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Log.e("Error Response", error.toString());
-                    Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            getResources().getText(R.string.network_error),
+                            Toast.LENGTH_LONG).show();
                 }
             });
             /*jsonObjectR.setRetryPolicy(new DefaultRetryPolicy(
